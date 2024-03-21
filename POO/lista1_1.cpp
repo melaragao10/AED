@@ -16,16 +16,19 @@ public:
         nome = n;
     }
 
-    void setTelefone(const string &t) {
+    void setTelefone(const string &t) 
+    {
         telefone = t;
     }
 
-    void imprimirDados() const {
+    void imprimirDados() const 
+    {
         cout << "Nome: " << nome << ", Telefone: " << telefone << "\n";
     }
 };
 
-int main() {
+int main() 
+{
 
     AgendaTelefonica agenda;
     agenda.setNome("Melissa Aragão");
