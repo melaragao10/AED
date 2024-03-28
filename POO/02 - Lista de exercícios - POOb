@@ -31,6 +31,7 @@ int main() {
 
 1b) Classe é uma estrutura de programação que encapsula dados para o estado e comportamentos para manipular esses dados.
 Ela serve como um modelo ou plano para criar objetos que compartilham características comuns.
+Ex:
 
 class Carro:
     marca = ""
@@ -42,6 +43,62 @@ class Carro:
     def definir_carro(self, marca, modelo):
         self.marca = marca
         self.modelo = modelo
+
+1c) Uma instância refere-se a um objeto específico criado a partir de uma classe.
+ Ex: 
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Carro {
+public:
+    string marca;
+    string modelo;
+};
+
+int main() {
+    Carro meu_carro;
+    
+    meu_carro.marca = "Toyota";
+    meu_carro.modelo = "Corolla";
+    
+    cout << "Meu carro é um " << meu_carro.marca << " " << meu_carro.modelo << "." << endl;
+    
+    return 0;
+}
+
+1d) Um objeto é uma instância particular de uma classe que contém dados e comportamentos associados a esse tipo de entidade.
+Ex:
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Carro {
+public:
+    string marca;
+    string modelo;
+};
+
+int main() {
+    Carro meu_carro;
+    
+    meu_carro.marca = "Toyota";
+    meu_carro.modelo = "Corolla";
+    
+    cout << "Meu carro é um " << meu_carro.marca << " " << meu_carro.modelo << "." << endl;
+    
+    return 0;
+}
+
+2) Por padrão, os membros de uma struct são públicos, enquanto os membros de uma class são privados.
+
+3) Atributos são as características ou dados que pertencem a um objeto de uma classe, enquanto métodos são as funções que definem o comportamento
+ou as operações que o objeto pode realizar.
+
 
 
 4) C
