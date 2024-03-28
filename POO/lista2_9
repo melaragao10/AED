@@ -1,0 +1,68 @@
+
+9) #include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+    const int MAX_ALUNOS = 100;
+    string nomes[MAX_ALUNOS];
+    int matriculas[MAX_ALUNOS];
+    int idades[MAX_ALUNOS];
+    int semestres[MAX_ALUNOS];
+    string cursos[MAX_ALUNOS];
+
+    int quantidadeAlunos = 0;
+
+    int opcao;
+    do {
+        cout << "\nMenu:\n1. Cadastrar Aluno\n2. Listar Alunos\n3. Sair\nEscolha uma opcao: ";
+        cin >> opcao;
+        cin.ignore();
+
+        switch (opcao) {
+            case 1:
+                if (quantidadeAlunos < MAX_ALUNOS) {
+                    cout << "Digite o nome do aluno: ";
+                    getline(cin, nomes[quantidadeAlunos]);
+
+                    cout << "Digite a matricula do aluno: ";
+                    cin >> matriculas[quantidadeAlunos];
+
+                    cout << "Digite a idade do aluno: ";
+                    cin >> idades[quantidadeAlunos];
+
+                    cout << "Digite o semestre do aluno: ";
+                    cin >> semestres[quantidadeAlunos];
+                    cin.ignore();
+
+                    cout << "Digite o curso do aluno: ";
+                    getline(cin, cursos[quantidadeAlunos]);
+
+                    quantidadeAlunos++;
+                    cout << "Aluno cadastrado com sucesso!" << endl;
+                } else {
+                    cout << "Limite de alunos atingido!" << endl;
+                }
+                break;
+            case 2:
+                cout << "Lista de Alunos:" << endl;
+                for (int i = 0; i < quantidadeAlunos; i++) {
+                    cout << "Nome: " << nomes[i] << endl;
+                    cout << "Matricula: " << matriculas[i] << endl;
+                    cout << "Idade: " << idades[i] << endl;
+                    cout << "Semestre: " << semestres[i] << endl;
+                    cout << "Curso: " << cursos[i] << endl;
+                    cout << "-----------------------------" << endl;
+                }
+                break;
+            case 3:
+                cout << "Encerrando o programa." << endl;
+                break;
+            default:
+                cout << "Opcao invalida. Tente novamente." << endl;
+        }
+    } while (opcao != 3);
+
+    return 0;
+}
