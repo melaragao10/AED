@@ -1,0 +1,48 @@
+1a) A Programação Orientada a Objetos (POO) é um estilo de programação que se concentra em "objetos" que possuem tanto dados quanto comportamentos.
+Esses objetos são criados a partir de modelos chamados de classes. POO destaca três princípios-chave: encapsulamento, herança e polimorfismo.
+
+Exemplo: 
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Carro {
+public:
+    string marca;
+    string modelo;
+
+    void dirigir() {
+        cout << "O " << marca << " " << modelo << " está em movimento." << endl;
+    }
+};
+
+int main() {
+    Carro meuCarro;
+
+    meuCarro.marca = "Toyota";
+    meuCarro.modelo = "Corolla";
+
+    meuCarro.dirigir();
+
+    return 0;
+}
+
+1b) Classe é uma estrutura de programação que encapsula dados para o estado e comportamentos para manipular esses dados.
+Ela serve como um modelo ou plano para criar objetos que compartilham características comuns.
+
+class Carro:
+    marca = ""
+    modelo = ""
+    
+    def dirigir(self):
+        print("O carro está em movimento.")
+
+    def definir_carro(self, marca, modelo):
+        self.marca = marca
+        self.modelo = modelo
+
+
+4) C
+
