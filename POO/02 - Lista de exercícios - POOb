@@ -103,3 +103,115 @@ ou as operações que o objeto pode realizar.
 
 4) C
 
+5) Herança permite que uma classe herde atributos e métodos de outra classe, enquanto o polimorfismo 
+permite que diferentes objetos sejam tratados de maneira uniforme através de uma interface comum.
+
+6) O encapsulamento, usando modificadores de visibilidade como +publico (público), -privado (privado) e #protegido (protegido),
+protege os dados da classe, controlando seu acesso e garantindo a integridade do sistema.
+
+7) São utilizados para acessar e modificar os atributos de uma classe de forma controlada, encapsulando o acesso aos dados.
+Ex: 
+
+#include <iostream>
+using namespace std;
+
+class Pessoa {
+private:
+    string nome;
+    int idade;
+    char sexo;
+
+public:
+    string getNome() { return nome; }
+    void setNome(string n) { nome = n; }
+
+    int getIdade() { return idade; }
+    void setIdade(int i) { idade = i; }
+
+    char getSexo() { return sexo; }
+    void setSexo(char s) { sexo = s; }
+};
+
+int main() {
+    Pessoa pessoa;
+    pessoa.setNome("Joao");
+    pessoa.setIdade(25);
+    pessoa.setSexo('M');
+    cout << "Nome: " << pessoa.getNome() << endl;
+    cout << "Idade: " << pessoa.getIdade() << endl;
+    cout << "Sexo: " << pessoa.getSexo() << endl;
+    return 0;
+}
+
+8) é um conceito que permite uma classe herdar atributos e métodos de outra classe, promovendo reutilização 
+de código e permitindo extensões e especializações.
+
+9) #include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+    const int MAX_ALUNOS = 100;
+    string nomes[MAX_ALUNOS];
+    int matriculas[MAX_ALUNOS];
+    int idades[MAX_ALUNOS];
+    int semestres[MAX_ALUNOS];
+    string cursos[MAX_ALUNOS];
+
+    int quantidadeAlunos = 0;
+
+    int opcao;
+    do {
+        cout << "\nMenu:\n1. Cadastrar Aluno\n2. Listar Alunos\n3. Sair\nEscolha uma opcao: ";
+        cin >> opcao;
+        cin.ignore();
+
+        switch (opcao) {
+            case 1:
+                if (quantidadeAlunos < MAX_ALUNOS) {
+                    cout << "Digite o nome do aluno: ";
+                    getline(cin, nomes[quantidadeAlunos]);
+
+                    cout << "Digite a matricula do aluno: ";
+                    cin >> matriculas[quantidadeAlunos];
+
+                    cout << "Digite a idade do aluno: ";
+                    cin >> idades[quantidadeAlunos];
+
+                    cout << "Digite o semestre do aluno: ";
+                    cin >> semestres[quantidadeAlunos];
+                    cin.ignore();
+
+                    cout << "Digite o curso do aluno: ";
+                    getline(cin, cursos[quantidadeAlunos]);
+
+                    quantidadeAlunos++;
+                    cout << "Aluno cadastrado com sucesso!" << endl;
+                } else {
+                    cout << "Limite de alunos atingido!" << endl;
+                }
+                break;
+            case 2:
+                cout << "Lista de Alunos:" << endl;
+                for (int i = 0; i < quantidadeAlunos; i++) {
+                    cout << "Nome: " << nomes[i] << endl;
+                    cout << "Matricula: " << matriculas[i] << endl;
+                    cout << "Idade: " << idades[i] << endl;
+                    cout << "Semestre: " << semestres[i] << endl;
+                    cout << "Curso: " << cursos[i] << endl;
+                    cout << "-----------------------------" << endl;
+                }
+                break;
+            case 3:
+                cout << "Encerrando o programa." << endl;
+                break;
+            default:
+                cout << "Opcao invalida. Tente novamente." << endl;
+        }
+    } while (opcao != 3);
+
+    return 0;
+}
+
+
