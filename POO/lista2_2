@@ -1,0 +1,1 @@
+2) Por padrão, os membros de uma struct são públicos, enquanto os membros de uma class são privados.
