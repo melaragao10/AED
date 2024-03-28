@@ -1,0 +1,34 @@
+7) São utilizados para acessar e modificar os atributos de uma classe de forma controlada, encapsulando o acesso aos dados.
+Ex: 
+
+#include <iostream>
+using namespace std;
+
+class Pessoa {
+private:
+    string nome;
+    int idade;
+    char sexo;
+
+public:
+    string getNome() { return nome; }
+    void setNome(string n) { nome = n; }
+
+    int getIdade() { return idade; }
+    void setIdade(int i) { idade = i; }
+
+    char getSexo() { return sexo; }
+    void setSexo(char s) { sexo = s; }
+};
+
+int main() {
+    Pessoa pessoa;
+    pessoa.setNome("Joao");
+    pessoa.setIdade(25);
+    pessoa.setSexo('M');
+    cout << "Nome: " << pessoa.getNome() << endl;
+    cout << "Idade: " << pessoa.getIdade() << endl;
+    cout << "Sexo: " << pessoa.getSexo() << endl;
+    return 0;
+}
+
