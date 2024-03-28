@@ -1,0 +1,3 @@
+
+6) O encapsulamento, usando modificadores de visibilidade como +publico (público), -privado (privado) e #protegido (protegido),
+protege os dados da classe, controlando seu acesso e garantindo a integridade do sistema.
