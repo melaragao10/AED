@@ -28,7 +28,7 @@ public:
 
     void imprimirDados() const {
         cout << "Marca: " << marca << ", Cor: " << cor 
-             << ", Ano: " << ano << ", Peso: " << peso << " kg" << endl;
+             << ", Ano: " << ano << ", Peso: " << peso << " kg\n";
     }
 };
 
@@ -52,12 +52,12 @@ public:
         if (saida.is_open()) {
             for (const auto& v : veiculos) {
                 saida << "Marca: " << v.getMarca() << ", Cor: " << v.getCor() 
-                      << ", Ano: " << v.getAno() << ", Peso: " << v.getPeso() << " kg" << endl;
+                      << ", Ano: " << v.getAno() << ", Peso: " << v.getPeso() << " kg\n";
             }
             saida.close();
-            cout << "Veículos salvos com sucesso em " << arquivo << "." << endl;
+            cout << "Veículos salvos com sucesso em " << arquivo << ".\n";
         } else {
-            cout << "Não foi possível abrir o arquivo para escrita." << endl;
+            cout << "Não foi possível abrir o arquivo para escrita.\n";
         }
     }
 };
@@ -73,3 +73,4 @@ int main() {
 
     return 0;
 }
+
