@@ -1,0 +1,108 @@
+//Uma biblioteca precisa de um sistema para gerenciar o empréstimo de livros aos usuários.
+//Cada livro deve conter informações como título, autor, ano de publicação e uma flag indicando se o livro está disponível ou emprestado.
+//O sistema deve ser capaz de registrar novos livros, atualizar o status dos livros (disponíveis ou ocupados) e salvar a lista de livros atual em um arquivo.
+//Implementamos esta estrutura em C++ usando POO e herança. Use a biblioteca fstream para manipular arquivos.
+
+// Questão: Sistema de Gestão de Biblioteca com POO, Herança e fstream
+
+#include <iostream>
+#include <vector>
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+class Item {
+protected:
+    string titulo;
+    string autor;
+    int anoPublicacao;
+    bool disponivel;
+
+public:
+    Item(string titulo, string autor, int ano, bool disponivel = true)
+        : titulo(titulo), autor(autor), anoPublicacao(ano), disponivel(disponivel) {}
+
+    void emprestar() {
+        if(disponivel) {
+            disponivel = false;
+            cout << titulo << " emprestado com sucesso!\n";
+        } else {
+            cout << titulo << " já está emprestado.\n";
+        }
+    }
+
+    void devolver() {
+        disponivel = true;
+        cout << titulo << " devolvido com sucesso!\n";
+    }
+
+    virtual void imprimirInfo() const {
+        cout << "Título: " << titulo
+             << ", Autor: " << autor
+             << ", Ano: " << anoPublicacao
+             << ", Disponível: " << (disponivel ? "Sim" : "Não") << '\n';
+    }
+};
+
+class Livro : public Item {
+public:
+    Livro(string titulo, string autor, int ano)
+        : Item(titulo, autor, ano) {}
+
+    void imprimirInfo() const override {
+        cout << "Livro - ";
+        Item::imprimirInfo();
+    }
+};
+
+class Biblioteca {
+private:
+    vector<Item*> itens;
+
+public:
+    ~Biblioteca() {
+        for(Item* item : itens) {
+            delete item;
+        }
+    }
+
+    void adicionarItem(Item* item) {
+        itens.push_back(item);
+    }
+
+    void imprimirAcervo() const {
+        for(const Item* item : itens) {
+            item->imprimirInfo();
+        }
+    }
+
+    void salvarAcervo(const string& arquivo) const {
+        ofstream saida(arquivo);
+        if(saida.is_open()) {
+            for(const Item* item : itens) {
+                saida << item->titulo << ", "
+                      << item->autor << ", "
+                      << item->anoPublicacao << ", "
+                      << (item->disponivel ? "Disponível" : "Emprestado") << '\n';
+            }
+            cout << "Acervo salvo com sucesso em " << arquivo << ".\n";
+        }
+        else {
+            cout << "Não foi possível abrir o arquivo.\n";
+        }
+    }
+};
+
+int main() {
+    Biblioteca biblioteca;
+
+    Livro* livro1 = new Livro("1984", "George Orwell", 1949);
+    biblioteca.adicionarItem(livro1);
+    livro1->emprestar();
+
+    biblioteca.imprimirAcervo();
+    biblioteca.salvarAcervo("acervo.txt");
+
+    return 0;
+}
