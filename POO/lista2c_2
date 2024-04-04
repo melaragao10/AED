@@ -34,7 +34,7 @@ public:
 
 int main() {
     Vendedor vendedor(2000, 5000, 10);
-    cout << "Salário total do vendedor: " << vendedor.calcularSalario() << endl;
+    cout << "Salário total do vendedor: " << vendedor.calcularSalario() << "\n";
     return 0;
 }
 
