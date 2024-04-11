@@ -1,2 +1,0 @@
-Estruturas de dados como árvores balanceadas (por exemplo, árvores AVL, árvores vermelho-negras) 
-têm operações de busca, inserção e exclusão com complexidade O(logn).
