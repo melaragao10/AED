@@ -1,0 +1,38 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+void quickSort(string &str, int inicio, int fim) {
+    if (inicio < fim) {
+        int p = particao(str, inicio, fim);
+        quickSort(str, inicio, p - 1);
+        quickSort(str, p + 1, fim);
+    }
+}
+
+int particao(string &str, int inicio, int fim) {
+    char pivo = str[fim];
+    int i = (inicio - 1);
+
+    for (int j = inicio; j <= fim - 1; j++) {
+        if (str[j] > pivo) {
+            i++;
+            swap(str[i], str[j]);
+        }
+    }
+    swap(str[i + 1], str[fim]);
+    return (i + 1);
+}
+
+int main() {
+    string entrada;
+    cout << "Digite uma string: ";
+    cin >> entrada;
+
+    quickSort(entrada, 0, entrada.length() - 1);
+
+    cout << "String em ordem decrescente: " << entrada << endl;
+
+    return 0;
+}
