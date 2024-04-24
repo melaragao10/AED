@@ -1,0 +1,88 @@
+#include <iostream>
+#include <vector>
+#include <cstring>
+
+using namespace std;
+
+struct pessoa {
+    int Matricula;
+    char Nome[30];
+    float Nota;
+};
+
+void merge(vector<pessoa> &array, int left, int middle, int right, int op) {
+    int n1 = middle - left + 1;
+    int n2 = right - middle;
+
+    vector<pessoa> L(n1), R(n2);
+
+    for (int i = 0; i < n1; i++)
+        L[i] = array[left + i];
+    for (int j = 0; j < n2; j++)
+        R[j] = array[middle + 1 + j];
+
+    int i = 0, j = 0, k = left;
+
+    while (i < n1 && j < n2) {
+        if ((op == 1 && L[i].Matricula <= R[j].Matricula) ||
+            (op == 2 && strcmp(L[i].Nome, R[j].Nome) <= 0) ||
+            (op == 3 && L[i].Nota <= R[j].Nota)) {
+            array[k] = L[i];
+            i++;
+        } else {
+            array[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+
+    while (i < n1) {
+        array[k] = L[i];
+        i++;
+        k++;
+    }
+
+    while (j < n2) {
+        array[k] = R[j];
+        j++;
+        k++;
+    }
+}
+
+void mergeSort(vector<pessoa> &array, int left, int right, int op) {
+    if (left >= right) return;
+
+    int middle = left + (right - left) / 2;
+    mergeSort(array, left, middle, op);
+    mergeSort(array, middle + 1, right, op);
+    merge(array, left, middle, right, op);
+}
+
+int main() {
+    int N, op;
+    cout << "Digite o numero de pessoas: ";
+    cin >> N;
+
+    vector<pessoa> pessoas(N);
+
+    for (int i = 0; i < N; i++) {
+        cout << "Matricula: ";
+        cin >> pessoas[i].Matricula;
+        cin.ignore();
+        cout << "Nome: ";
+        cin.getline(pessoas[i].Nome, 30);
+        cout << "Nota: ";
+        cin >> pessoas[i].Nota;
+    }
+
+    cout << "Ordenar por (1-Matricula, 2-Nome, 3-Nota): ";
+    cin >> op;
+
+    mergeSort(pessoas, 0, N - 1, op);
+
+    for (pessoa &p : pessoas) {
+        cout << p.Matricula << " " << p.Nome << " " << p.Nota << endl;
+    }
+
+    return 0;
+}
