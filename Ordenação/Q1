@@ -1,1 +1,44 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+void insertionSort(vector<string> &nomes) {
+    int i, j;
+    string chave;
+    for (i = 1; i < nomes.size(); i++) {
+        chave = nomes[i];
+        j = i - 1;
+        while (j >= 0 && nomes[j] > chave) {
+            nomes[j + 1] = nomes[j];
+            j = j - 1;
+        }
+        nomes[j + 1] = chave;
+    }
+}
+
+int main() {
+    vector<string> nomes;
+    int n;
+    string nome;
+
+    cout << "Digite o número de nomes: ";
+    cin >> n;
+    cin.ignore();
+    for (int i = 0; i < n; i++) {
+        cout << "Digite o nome " << i + 1 << ": ";
+        getline(cin, nome);
+        nomes.push_back(nome);
+    }
+
+    insertionSort(nomes);
+
+    cout << "Nomes ordenados alfabeticamente:" << endl;
+    for (const auto& nome : nomes) {
+        cout << nome << endl;
+    }
+
+    return 0;
+}
 
